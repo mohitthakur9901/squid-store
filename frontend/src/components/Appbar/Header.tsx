@@ -7,10 +7,15 @@ import { CiShoppingCart } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross1 } from "react-icons/rx";
 import SearchBar from '../search/SearchBar';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux-store/store';
+import UserProfile from './UserProfile';
 
 const Header = () => {
 
+  const user = useSelector((state : RootState) => state.user)
+  console.log(user);
+  
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
 
@@ -49,14 +54,21 @@ const Header = () => {
 
           <div className={`flex items-center gap-4`}>
             <SearchBar />
-            <div className={`sm:flex sm:gap-4 hidden `}>
-              <Link
+            <div className={`sm:flex items-center sm:gap-4 hidden `}>
+              {
+                user ? (
+                   <UserProfile email={user.email} name={user.name} profileImg={user.profileImg} />
+                
+                ): (
+                  <Link
                 className="rounded-md bg-teal-600 px-5 py-2 text-sm font-medium text-white shadow hover:bg-teal-500"
-                to="/api/auth/signin"
+                to="/auth/signin"
               >
                 Login
               </Link>
 
+                )
+              }
               <Link to="/cart"
                 className=' px-5 py-2.5 text-sm  font-bold'
               >

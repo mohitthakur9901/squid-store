@@ -5,9 +5,15 @@ import Header from '../components/Appbar/Header'
 import Card from '../components/ui/Card'
 import Collection from '../components/ui/Collection'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux-store/store'
 
 const HomePage = () => {
     document.title = "Squid-Store 🦑"
+
+    const user  = useSelector((state: RootState) => state.user);
+    console.log(user);
+    
 
     const Imglinks = [
       "https://images.unsplash.com/photo-1633464129147-777bdcc97c1d?q=80&w=2084&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

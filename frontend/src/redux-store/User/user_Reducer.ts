@@ -29,7 +29,14 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
-            state = action.payload;
+            state._id = action.payload._id;
+            state.name = action.payload.name;
+            state.profileImg = action.payload.profileImg
+            state.email = action.payload.email;
+            state.createdAt = action.payload.createdAt;
+            state.updatedAt = action.payload.updatedAt;
+            state.orders = action.payload.orders;
+            state.address = action.payload.address;
         },
         clearUser : (state, action) => {
             state._id = action.payload._id;
