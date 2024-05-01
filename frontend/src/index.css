@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New',
+}
+
+
+html,
+body {
+    height: 100%;
+    perspective: 800px;
+    width: 100%;
+}
