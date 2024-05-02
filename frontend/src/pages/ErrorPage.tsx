@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 const ErrorPage = () => {
     return (
@@ -18,12 +19,20 @@ const ErrorPage = () => {
                         Try searching again, or return home to start from the beginning.
                     </p>
 
-                    <a
-                        href="/"
-                        className="mt-6 inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring"
+                    <Link
+                        className="group relative inline-block overflow-hidden border border-teal-600 px-8 py-3 focus:outline-none focus:ring"
+                        to="/"
                     >
-                        Go Back Home
-                    </a>
+                        <span
+                            className="absolute inset-y-0 left-0 w-[2px] bg-teal-600 transition-all group-hover:w-full group-active:bg-teal-500"
+                        ></span>
+
+                        <span
+                            className="relative text-sm font-medium text-teal-600 transition-colors group-hover:text-white"
+                        >
+                            Go Back To Home
+                        </span>
+                    </Link>
                 </div>
             </div>
         </div>

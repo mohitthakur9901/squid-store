@@ -1,10 +1,16 @@
+import { useEffect } from "react"
 import SignUp from "../components/auth/User/SignUp"
 
 
 
 
-export const SignUpPage = () => {
+const SignUpPage = () => {
+  useEffect(() => {
+    document.title = "Sign Up"
+  },[])
   return (
    <SignUp/>
   )
 }
+
+export default SignUpPage
