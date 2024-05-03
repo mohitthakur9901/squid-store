@@ -1,4 +1,11 @@
+
+
+
 export const HeaderLinks = [
+    {
+        title : "Home",
+        link : "/"
+    },
     {
         title : "T-Shirts",
         link : "/t-shirts"

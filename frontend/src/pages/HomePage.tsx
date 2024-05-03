@@ -4,6 +4,7 @@ import Carousel from '../components/ui/Carousel'
 import Header from '../components/Appbar/Header'
 import Card from '../components/ui/Card'
 import Collection from '../components/ui/Collection'
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
     document.title = "Squid-Store 🦑"
@@ -23,12 +24,12 @@ const HomePage = () => {
     <>
     <Header />
     <div className="bg-indigo-600 px-4 py-3 text-white">
-      <p className="text-center text-sm font-medium py-2">
+      <p className="text-center text-sm font-medium ">
         Love Alpine JS?
-        <a href="#" className="inline-block underline">Check out this new course!</a>
+        <Link to="#" className="inline-block underline">Check out this new course!</Link>
       </p>
     </div>
-    <div className="py-5">
+    <div className="">
       <Carousel link={Imglinks.map((link, index) => (
         <img key={index} src={link} alt={`Slide ${index}`} />
       ))} autoSlide={true} />

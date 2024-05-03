@@ -8,6 +8,7 @@ interface Props {
 
 const Carousel : React.FC<Props> = ({link , autoSlide}) => {
     const [curr , setCurr] = useState<number>(0)
+    
     const next = () => {
         setCurr((c) => (
             c === link.length - 1 ? 0 : c + 1

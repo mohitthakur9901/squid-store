@@ -10,7 +10,12 @@ import SignInPage from "./pages/SignInPage"
 import ErrorPage from "./pages/ErrorPage"
 import Cart from './components/cart/Cart.tsx'
 import HomePage from './pages/HomePage.tsx'
-// show  Header in all routes except signin signup  and errorPage
+import Tshirts from './pages/T-shirts.tsx'
+import Stickers from './pages/Stickers.tsx'
+import Merchantdise from './pages/Merchantdise.tsx'
+import Header from './components/Appbar/Header.tsx'
+import { Provider } from 'react-redux'
+import { store } from './redux-store/store.ts'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +38,27 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/t-shirts",
+        element: <>
+          <Header />
+          <Tshirts />
+        </>,
+      },
+      {
+        path: "/stickers",
+        element: <>
+          <Header />
+          <Stickers />
+        </>,
+      },
+      {
+        path: "/merchandise",
+        element: <>
+          <Header />
+          <Merchantdise />
+        </>,
       }
     ]
   }
@@ -40,7 +66,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+     <Provider store={store}>
     <Toaster position='top-center' />
     <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 )

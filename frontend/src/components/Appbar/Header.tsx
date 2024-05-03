@@ -34,24 +34,22 @@ const Header = () => {
           <div className="hidden md:block">
             <nav aria-label="Global">
               <ul className="flex items-center gap-6 text-sm">
-                {
-
-                  HeaderLinks.map((link, index) => (
-                    <Link key={index} to={link.link} className="text-sm font-medium text-gray-500 hover:text-gray-900">
-                      {link.title}
-                    </Link>
-                  ))
-                }
+                {HeaderLinks.map((link, index) => (
+                  <Link
+                    key={index}
+                    to={link.link}
+                    className={`text-sm font-medium text-gray-500 hover:text-gray-900`}
+                  >
+                    {link.title}
+                  </Link>
+                ))}
               </ul>
-
             </nav>
           </div>
 
           <div className={`flex items-center gap-4`}>
-          <SearchBar />
+            <SearchBar />
             <div className={`sm:flex sm:gap-4 hidden `}>
-              {/* Add Search Option */}
-            
               <Link
                 className="rounded-md bg-teal-600 px-5 py-2 text-sm font-medium text-white shadow hover:bg-teal-500"
                 to="/api/auth/signin"
@@ -70,14 +68,14 @@ const Header = () => {
             <div className="block md:hidden">
               <Button onClick={() => setIsMenuOpen(!isMenuOpen)} className="rounded bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 hover:text-gray-700 transition ">
                 {
-                  isMenuOpen ? <RxCross1/> : <RxHamburgerMenu/>
+                  isMenuOpen ? <RxCross1 /> : <RxHamburgerMenu />
                 }
               </Button >
             </div>
-           
-          </div>  
+
+          </div>
         </div>
-        <div className={`${isMenuOpen ? "" : "hidden" } transition ease-linear `}>
+        <div className={`${isMenuOpen ? "" : "hidden"} transition ease-linear `}>
           {/* render HeaderLInks */}
           <nav aria-label="Global" className='bg-gray-100 py-2'>
             <ul className="flex flex-col items-center gap-6 text-sm">
@@ -94,7 +92,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-    
+
   )
 }
 

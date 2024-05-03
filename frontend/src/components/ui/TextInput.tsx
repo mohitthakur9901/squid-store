@@ -1,4 +1,4 @@
-type Types = "password" | "text" | "email"; 
+type Types = "password" | "text" | "email" | "number"; 
 export const TextInput = ({
     placeholder,
     onChange,

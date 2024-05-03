@@ -44,7 +44,7 @@ const SearchBar = () => {
           label=""
           value={search}
           onChange={handleInputChange}
-          className="mr-2 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-teal-500"
+          className="mr-2 ml-1 px-1 py-2 border border-gray-300 rounded focus:outline-none focus:border-teal-500"
         />
         <Button
           onClick={() => {console.log(search);
