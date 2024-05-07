@@ -16,6 +16,7 @@ import Merchantdise from './pages/Merchantdise.tsx'
 import Header from './components/Appbar/Header.tsx'
 import { Provider } from 'react-redux'
 import { store } from './redux-store/store.ts'
+import Profile from './pages/Profile.tsx'
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
         element: <>
           <Header />
           <Merchantdise />
+        </>,
+      }
+      ,
+      {
+        path: "/profile",
+        element: <>
+          <Header />
+          <Profile />
         </>,
       }
     ]

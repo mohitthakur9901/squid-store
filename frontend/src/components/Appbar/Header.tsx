@@ -1,21 +1,18 @@
 
 import { useState } from 'react'
-import { HeaderLinks } from './Links/link'
+import { HeaderLinks, MobileHeaderLinks } from './Links/link'
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/Button'
 import { CiShoppingCart } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross1 } from "react-icons/rx";
-import SearchBar from '../search/SearchBar';
-import { useSelector } from 'react-redux';
+import { useSelector  } from 'react-redux';
 import { RootState } from '../../redux-store/store';
-import UserProfile from './UserProfile';
 
 const Header = () => {
 
-  const user = useSelector((state : RootState) => state.user)
-  console.log(user);
-  
+  const user = useSelector((state: RootState) => state.user)
+
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
 
@@ -23,7 +20,7 @@ const Header = () => {
   return (
     <header className="bg-teal-100  ">
       <div className="mx-auto  max-w-screen-xl px-4 sm:px-6 lg:px-8 ">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16  items-center justify-between ">
           <div className="md:flex md:items-center md:gap-12">
             <Link className="block text-teal-600" to="/">
               <span className="sr-only">Home</span>
@@ -51,59 +48,57 @@ const Header = () => {
               </ul>
             </nav>
           </div>
-
-          <div className={`flex items-center gap-4`}>
-            <SearchBar />
-            <div className={`sm:flex items-center sm:gap-4 hidden `}>
+            
+         <div className="flex items-center gap-2">
+         <div className=" md:hidden">
+            <Button onClick={() => setIsMenuOpen(!isMenuOpen)} className="rounded bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 hover:text-gray-700 transition ">
               {
-                user ? (
-                   <UserProfile email={user.email} name={user.name} profileImg={user.profileImg} />
-                
-                ): (
-                  <Link
-                className="rounded-md bg-teal-600 px-5 py-2 text-sm font-medium text-white shadow hover:bg-teal-500"
-                to="/auth/signin"
-              >
-                Login
-              </Link>
-
-                )
+                isMenuOpen ? <RxCross1 /> : <RxHamburgerMenu />
               }
-              <Link to="/cart"
-                className=' px-5 py-2.5 text-sm  font-bold'
-              >
-                <CiShoppingCart className='h-6 w-6' />
-              </Link>
-
-            </div>
-
-            <div className="block md:hidden">
-              <Button onClick={() => setIsMenuOpen(!isMenuOpen)} className="rounded bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 hover:text-gray-700 transition ">
-                {
-                  isMenuOpen ? <RxCross1 /> : <RxHamburgerMenu />
-                }
-              </Button >
-            </div>
-
+            </Button >
           </div>
-        </div>
-        <div className={`${isMenuOpen ? "" : "hidden"} transition ease-linear `}>
-          {/* render HeaderLInks */}
-          <nav aria-label="Global" className='bg-gray-100 py-2'>
-            <ul className="flex flex-col items-center gap-6 text-sm">
-              {
+          <div className="flex items-center justify-end gap-4">
+           {
+            user._id ? (
+              <Link to="/profile" >
+                <img src={user.profileImg} alt="" className='h-10 w-10 rounded-t-full ' />
+              </Link>
+            ) : (
+              <Link to="/auth/signin" className="rounded-md bg-teal-600 px-5 py-2 text-sm font-medium text-white shadow hover:bg-teal-500">
+                Sign In
+              </Link>
+            )
+           }
 
-                HeaderLinks.map((link, index) => (
-                  <Link key={index} to={link.link} className="text-sm font-medium text-gray-500 hover:text-gray-900">
-                    {link.title}
-                  </Link>
-                ))
-              }
-            </ul>
-          </nav>
+            {/* Render cart button (hidden by default on mobile) */}
+            <Link
+              to={user ? '/cart' : '/auth/signin'}
+              className="px-5 py-2.5 text-sm font-bold hidden md:inline-block hover:bg-slate-200 rounded-lg "
+            >
+              <CiShoppingCart className="h-6 w-6" />
+            </Link>
+          </div>
+         </div>
+    
+
         </div>
       </div>
-    </header>
+      <div className={`${isMenuOpen ? "" : "hidden"} transition ease-linear `}>
+        {/* render HeaderLInks */}
+        <nav aria-label="Global" className='bg-gray-100 py-2'>
+          <ul className="flex flex-col items-center gap-6 text-sm">
+            {
+
+              MobileHeaderLinks.map((link, index) => (
+                <Link key={index} to={link.link} className="text-sm font-medium text-gray-500 hover:text-gray-900">
+                  {link.title}
+                </Link>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header >
 
   )
 }
